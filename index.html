@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<title>Köböző</title>
+</head>
+<body>
+<div class="topnav">
+  <a class="active" href="#home">Farönk térfogat számláló</a>
+  <a href="#hirdetes">Hírdetés</a>
+  <a href="#szamologep">Számológép</a>
+  <a href="#mobilalkalmazas">Mobilalkalmazás</a>
+  <a href="#keszlet">Készlet</a>
+  <a href="#formanyomtatvany">Formanyomtatvány</a>
+</div>
+
+<div class="container-fluid" id="szamolas">
+    <h2>Famennyiség kalkulátor</h2>
+        <form id="form">
+            <label for="fa">Farönk térfogat számító</label>
+            <br><br>
+            <select name="fafelek" id="fafelek">
+                <option value="Huber">Huber</option>
+                <option value="Scribner">Scribner</option>
+                <option value="Doyle">Doyle</option>
+                <option value="International">International 1/4</option>
+                <option value="Smalian">Smalian (USFS)</option>
+                <option value="Newton">Newton</option>
+                <option value="Brereton">Brereton (PNG)</option>
+                <option value="Vermont">Vermont</option>
+            </select>
+            <p>Középső átmérő</p>
+            <input type="number" id="atmero">
+            <br>
+            <p>Hosszúság</p>
+            <input type="number" id="hosszusag">
+            <p>Mennyiség(db)</p>
+            <input type="number" id="mennyiseg">
+            <br><br>
+
+            <button id="szamol">Számol</button>
+            <br>
+            <p>A végső érték megközelítő, a változó tényezőknek köszönhetően eltérhet az aktuális értéktől.</p>
+
+            
+</div>
+</body>
+</html>
