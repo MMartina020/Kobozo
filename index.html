@@ -17,33 +17,75 @@
 </div>
 
 <div class="container-fluid" id="szamolas">
-    <h2>Famennyiség kalkulátor</h2>
-        <form id="form">
-            <label for="fa">Farönk térfogat számító</label>
-            <br><br>
-            <select name="fafelek" id="fafelek">
-                <option value="Huber">Huber</option>
-                <option value="Scribner">Scribner</option>
-                <option value="Doyle">Doyle</option>
-                <option value="International">International 1/4</option>
-                <option value="Smalian">Smalian (USFS)</option>
-                <option value="Newton">Newton</option>
-                <option value="Brereton">Brereton (PNG)</option>
-                <option value="Vermont">Vermont</option>
-            </select>
-            <p>Középső átmérő</p>
-            <input type="number" id="atmero">
-            <br>
-            <p>Hosszúság</p>
-            <input type="number" id="hosszusag">
-            <p>Mennyiség(db)</p>
-            <input type="number" id="mennyiseg">
-            <br><br>
+    <section>
+        <div id="koboz">
+          <form action="">
+             <h2>Farönk térfogat számító</h2>
+              <select name="" id="szamolasok">
+                  <option value="Huber">Huber</option>
+                  <option value="Schribner">Schribner</option>
+                  <option value="Doyle">Doyle</option>
+              </select>
+              <div class="div1 div"> 
+                  <h2>Térfogat (kéregmentes)</h2><br>
+                <div class="div1inner">
+                  <b id="terfogat">---</b>
+                  <span>m<sup>3</sup></span> 
+                </div>
+              </div>
+              <div class="div2 div">
+                  <h2> Középső átmérő</h2>
+                  <input type="number" min="0" id="atmero" placeholder="cm">            
+              </div>
+              <div class="div3 div">
+                  <h3>Hosszúság</h3>
+                  <h3>Mennyiség (db)</h3> 
+                  <input type="number" min="0" id="hosz" placeholder="m">
+                  <input type="number"  min="0" id="menyiseg" placeholder="1">
+              </div>
+              <button type="button" id="szamol">Számol</button>
+             
+          </form>  
+      </div>
+    </section>
 
-            <button id="szamol">Számol</button>
-            <br>
-            <p>A végső érték megközelítő, a változó tényezőknek köszönhetően eltérhet az aktuális értéktől.</p>
+    <script>
+    
+      const szamol=document.getElementById("szamol");
+      const szamolasok=document.getElementById("szamolasok");
+      const terfogat=document.getElementById("terfogat");
+      const atmero=document.getElementById("atmero");
+      const hosz=document.getElementById("hosz");
+      const menyiseg=document.getElementById("menyiseg");
 
+
+
+
+      function faTerfogat(){
+        if(szamolasok.value!="Huber"){
+           alert("A kiválasztott számolási módszer jelenleg fejlesztés alatt áll használd kérlek a Huber-t!")
+        }
+        if(atmero.value!=null && hosz.value!=0 && (szamolasok.value="Huber")){
+          let elso= ((Math.pow((((atmero.value/100)+hosz.value)*1.5),2))*Math.PI)/4 ;
+          let masodik=((Math.pow(atmero.value/100,2))*Math.PI)/4; 
+          let osszeg=Math.round(((elso+masodik)/2)*hosz.value);
+          terfogat.innerHTML=osszeg;
+        }
+        if(hosz.value==0 && atmero.value==0 ){
+           alert("Kérlek adj meg adatokat!");
+        }
+        else if(atmero.value==0){
+          alert("Kérlek add meg az átmérőt!");
+         }
+        else  if(hosz.value==0){
+          alert("Kérlek add meg a fa hosszát!");
+         }
+         
+        
+       };
+       szamol.addEventListener("click", faTerfogat);
+
+  </script>
             
 </div>
 </body>
